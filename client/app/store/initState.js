@@ -1,6 +1,7 @@
 import NavItem from '../classes/NavItem';
 
 export const initialState = {
+  navOpen: false,
   navItems : [
     new NavItem(
       0,

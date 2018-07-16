@@ -2,11 +2,12 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import NavToggle from './NavToggle';
 import Navigation from './Navigation';
 import Home from './Home';
 import Test from './Test';
 import { activateNavItem } from '../store/actions';
-import { main } from '../styles/styles';
+import '../styles/styles.css';
 
 
 const Main = ({
@@ -14,12 +15,17 @@ const Main = ({
   activateNavItem
 }) => {
   return (
-    <main style={main}>
-      <Navigation items={navItems} activate={activateNavItem} />
-      <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route path='/test' render={(props) => <Test {...props} />}/>
-      </Switch>
+    <main>
+      <header>
+        <NavToggle />
+        <Navigation items={navItems} activate={activateNavItem} />
+      </header>
+      <section>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/test' render={(props) => <Test {...props} />}/>
+        </Switch>
+      </section>
     </main>
   )
 };

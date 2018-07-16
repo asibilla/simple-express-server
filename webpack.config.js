@@ -16,8 +16,9 @@ module.exports = () => {
     target: 'node',
     module: {
       rules: [
-        { test: /\.js?$/, loader: "babel-loader" },
-        { test: /\.html$/, loader: "html-loader" }
+        { test: /\.js$/, loader: "babel-loader" },
+        { test: /\.html$/, loader: "html-loader" },
+        { test: /\.css$/, use: [{loader: "style-loader"}, {loader: "css-loader"}]}
       ]
     },
     resolve: {
