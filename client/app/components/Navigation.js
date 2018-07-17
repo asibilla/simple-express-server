@@ -1,17 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { activateNavItem } from '../store/actions';
+
+
+function isOpen(navOpen) {
+  return (navOpen) ? 'open' : '';
+}
+
+function isActive(id, activeNavItem) {
+  return (id === activeNavItem) ? 'active' : '';
+}
 
 const Navigation = ({
   items,
-  activate
+  navOpen,
+  activeNavItem,
+  dispatchActivateNavItem
 }) => {
   return (
-    <nav>
+    <nav className={isOpen(navOpen)}>
       <ul>
         { items ? 
-        items.map((item, index) => 
-          <li key={`link-item-${index}`} className="test">
-            <Link to={item.route}>
+        items.map((item) => 
+          <li key={`link-item-${item.id}`} 
+            className={isActive(item.id, activeNavItem)} 
+          >
+            <Link to={item.route} onClick={() => dispatchActivateNavItem(item.id)}>
               {item.name}
             </Link>
           </li>
@@ -21,4 +36,15 @@ const Navigation = ({
   )
 }
 
-export default Navigation;
+function mapStateToProps(state)  {
+  return {
+    navOpen: state.navigation.navOpen,
+    activeNavItem: state.navigation.activeNavItem
+  }
+}
+
+const mapDispatchToProps = {
+  dispatchActivateNavItem: activateNavItem
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

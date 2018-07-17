@@ -10,6 +10,10 @@ function navigation(state = initialState, action) {
       newState.navOpen = !state.navOpen;
       return newState;
     case ACTIVATE_NAVITEM :
+      if (action.data !== state.activeNavItem) {
+        newState.activeNavItem = action.data;
+        newState.navOpen = false;
+      }
       return newState;
     default: 
       return state;

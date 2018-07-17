@@ -6,14 +6,12 @@ export const initialState = {
     new NavItem(
       0,
       'Home',
-      '/',
-      true
+      '/'
     ),
     new NavItem(
       1,
       'Page 1',
-      '/page/1',
-      false
+      '/page/1'
     ),
     new NavItem(
       2,
@@ -25,5 +23,6 @@ export const initialState = {
       'Page 3',
       '/page/3'
     )
-  ]
+  ],
+  activeNavItem: 0
 }

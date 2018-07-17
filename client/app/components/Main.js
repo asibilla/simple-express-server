@@ -6,19 +6,17 @@ import NavToggle from './NavToggle';
 import Navigation from './Navigation';
 import Home from './Home';
 import Test from './Test';
-import { activateNavItem } from '../store/actions';
 import '../styles/styles.css';
 
 
 const Main = ({
-  navItems,
-  activateNavItem
+  navItems
 }) => {
   return (
     <main>
       <header>
         <NavToggle />
-        <Navigation items={navItems} activate={activateNavItem} />
+        <Navigation items={navItems} />
       </header>
       <section>
         <Switch>
@@ -31,14 +29,10 @@ const Main = ({
 };
 
 const mapStateToProps = function(state) {
-  console.log('the state', state);
   return {
     navItems: state.navigation.navItems
   }
 };
 
-const mapDispatchToProps = {
-  activateNavItem
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);
