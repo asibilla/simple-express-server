@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { activateNavItem } from '../store/actions';
 
 
-function isOpen(navOpen) {
+export function isOpen(navOpen) {
   return (navOpen) ? 'open' : '';
 }
 
-function isActive(id, activeNavItem) {
+export function isActive(id, activeNavItem) {
   return (id === activeNavItem) ? 'active' : '';
 }
 
@@ -37,14 +37,14 @@ const Navigation = ({
   )
 }
 
-function mapStateToProps(state)  {
+export function mapStateToProps(state)  {
   return {
     navOpen: state.navigation.navOpen,
     activeNavItem: state.navigation.activeNavItem
   }
 }
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   dispatchActivateNavItem: activateNavItem
 };
 
