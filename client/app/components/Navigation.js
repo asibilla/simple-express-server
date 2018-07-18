@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { activateNavItem } from '../store/actions';
 
 
@@ -26,9 +27,9 @@ const Navigation = ({
           <li key={`link-item-${item.id}`} 
             className={isActive(item.id, activeNavItem)} 
           >
-            <Link to={item.route} onClick={() => dispatchActivateNavItem(item.id)}>
+            <NavLink to={item.route} onClick={() => dispatchActivateNavItem(item.id)}>
               {item.name}
-            </Link>
+            </NavLink>
           </li>
       ) : null } 
       </ul>

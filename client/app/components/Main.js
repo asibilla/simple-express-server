@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import NavToggle from './NavToggle';
 import Navigation from './Navigation';
 import Home from './Home';
-import Test from './Test';
+import Page from './Page';
 import '../styles/styles.css';
 
 
@@ -21,7 +21,7 @@ const Main = ({
       <section>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/test' render={(props) => <Test {...props} />}/>
+          <Route path='/page/:id' component={Page} />}/>
         </Switch>
       </section>
     </main>
@@ -35,4 +35,4 @@ const mapStateToProps = function(state) {
 };
 
 
-export default connect(mapStateToProps)(Main);
+export default withRouter(connect(mapStateToProps)(Main));
