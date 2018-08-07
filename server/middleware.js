@@ -1,6 +1,7 @@
-import { users } from './data/data';
+const data = require('./data/data');
 
-export function getData(req) {
-  return users;
+function getContent(id) {
+  return data.content[id] || {};
 }
 
+module.exports = { getContent }; 
