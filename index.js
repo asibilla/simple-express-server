@@ -1,3 +1,5 @@
-const server = require('./server/server');
+require( "babel-register" )( {
+  presets: [ "env" ],
+} );
 
-module.exports = server;
+require('./server/server');

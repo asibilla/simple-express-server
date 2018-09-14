@@ -27,7 +27,7 @@ const Navigation = ({
           <li key={`link-item-${item.id}`} 
             className={isActive(item.id, activeNavItem)} 
           >
-            <NavLink to={item.route} onClick={() => dispatchActivateNavItem(item.id)}>
+            <NavLink to={item.path} onClick={() => dispatchActivateNavItem(item.id)}>
               {item.name}
             </NavLink>
           </li>
@@ -39,8 +39,8 @@ const Navigation = ({
 
 export function mapStateToProps(state)  {
   return {
-    navOpen: state.navigation.navOpen,
-    activeNavItem: state.navigation.activeNavItem
+    navOpen: (state && state.navOpen) ? state.navOpen.navOpen : null,
+    activeNavItem: (state && state.activateNavItem) ? state.activateNavItem.activeNavItem : null
   }
 }
 

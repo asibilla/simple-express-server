@@ -6,17 +6,16 @@ import NavToggle from './NavToggle';
 import Navigation from './Navigation';
 import Home from './Home';
 import Page from './Page';
-import '../styles/styles.css';
+import routes from '../routes';
 
 
-const Main = ({
-  navItems
-}) => {
+
+const Main = () => {
   return (
     <main>
       <header>
         <NavToggle />
-        <Navigation items={navItems} />
+        <Navigation items={routes} />
       </header>
       <section>
         <Switch>
@@ -28,10 +27,8 @@ const Main = ({
   )
 };
 
-const mapStateToProps = function(state) {
-  return {
-    navItems: state.navigation.navItems
-  }
+const mapStateToProps = function() {
+  return {};
 };
 
 export default withRouter(connect(mapStateToProps)(Main));

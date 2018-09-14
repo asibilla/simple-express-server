@@ -2,7 +2,6 @@
 
 const dotenv = require('dotenv-webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = () => {
 
@@ -17,7 +16,6 @@ module.exports = () => {
     module: {
       rules: [
         { test: /\.js$/, loader: "babel-loader" },
-        { test: /\.html$/, loader: "html-loader" },
         { test: /\.css$/, use: [{loader: "style-loader"}, {loader: "css-loader"}]}
       ]
     },
@@ -28,10 +26,6 @@ module.exports = () => {
       new dotenv({
         path: path.join(__dirname, '.env')
       }),
-      new HtmlWebpackPlugin({
-        filename: "./index.html",
-        template: path.join(__dirname, 'client', 'index.html')
-      })
     ]
   };
 };

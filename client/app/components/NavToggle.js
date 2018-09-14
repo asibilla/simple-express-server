@@ -25,7 +25,7 @@ export function NavToggle({
 
 function mapStateToProps(state) {
   return {  
-    navOpen: state.navigation.navOpen
+    navOpen: (state & state.navOpen) ? state.navOpen.navOpen : null
   }
 }
 
